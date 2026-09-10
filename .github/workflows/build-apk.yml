@@ -19,13 +19,13 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Install System Gradle
-        run: sudo apt-get update && sudo apt-get install -y gradle
-
-      - name: Generate Gradle Wrapper if missing
+      - name: Generate Modern Gradle Wrapper
         run: |
+          npx gradle-init --gradle-version 8.5 || true
           if [ ! -f "gradlew" ]; then
-            gradle wrapper
+            wget https://services.gradle.org/distributions/gradle-8.5-bin.zip
+            unzip -q gradle-8.5-bin.zip
+            ./gradle-8.5/bin/gradle wrapper --gradle-version 8.5
           fi
           chmod +x gradlew
 
@@ -34,6 +34,9 @@ jobs:
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
+        with:
+          name: TradePulse-debug
+          path: app/build/outputs/apk/debug/*.apk
         with:
           name: TradePulse-debug
           path: app/build/outputs/apk/debug/*.apk
