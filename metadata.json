@@ -1,0 +1,6 @@
+{
+  "name": "TradePulse",
+  "description": "Real-time market tracker, custom price alerts, historical data visualization, sentiment indicators, and Pine Script/Python backtesting strategies for Gold, Bitcoin, and Major Indices.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
