@@ -19,13 +19,12 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Generate Modern Gradle Wrapper
+      - name: Generate Compatible Gradle Wrapper (8.13)
         run: |
-          npx gradle-init --gradle-version 8.5 || true
           if [ ! -f "gradlew" ]; then
-            wget https://services.gradle.org/distributions/gradle-8.5-bin.zip
-            unzip -q gradle-8.5-bin.zip
-            ./gradle-8.5/bin/gradle wrapper --gradle-version 8.5
+            wget https://services.gradle.org/distributions/gradle-8.13-bin.zip
+            unzip -q gradle-8.13-bin.zip
+            ./gradle-8.13/bin/gradle wrapper --gradle-version 8.13
           fi
           chmod +x gradlew
 
