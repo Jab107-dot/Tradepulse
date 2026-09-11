@@ -19,13 +19,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Generate Compatible Gradle Wrapper (8.13)
+      - name: Configure Correct Gradle Version (9.3.1)
         run: |
-          if [ ! -f "gradlew" ]; then
-            wget https://services.gradle.org/distributions/gradle-8.13-bin.zip
-            unzip -q gradle-8.13-bin.zip
-            ./gradle-8.13/bin/gradle wrapper --gradle-version 8.13
-          fi
+          wget https://services.gradle.org/distributions/gradle-9.3.1-bin.zip
+          unzip -q gradle-9.3.1-bin.zip
+          ./gradle-9.3.1/bin/gradle wrapper --gradle-version 9.3.1
           chmod +x gradlew
 
       - name: Build TradePulse Debug APK
@@ -34,5 +32,7 @@ jobs:
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
+          name: TradePulse-debug
+          path: app/build/outputs/apk/debug/*.apk
           name: TradePulse-debug
           path: app/build/outputs/apk/debug/*.apk
