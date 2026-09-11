@@ -34,5 +34,3 @@ jobs:
         with:
           name: TradePulse-debug
           path: app/build/outputs/apk/debug/*.apk
-          name: TradePulse-debug
-          path: app/build/outputs/apk/debug/*.apk
